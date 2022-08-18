@@ -19,6 +19,7 @@ function DatePickerInput(
     inputMode,
     withModal = true,
     withDateFormatInLabel = true,
+    iconColor,
     ...rest
   }: {
     inputMode: 'start' | 'end'
@@ -28,6 +29,7 @@ function DatePickerInput(
     validRange?: ValidRangeType | undefined
     withModal?: boolean
     withDateFormatInLabel?: boolean
+    iconColor?: string
   } & Omit<
     React.ComponentProps<typeof TextInput>,
     'value' | 'onChange' | 'onChangeText'
@@ -68,7 +70,7 @@ function DatePickerInput(
             inputFormat,
             withDateFormatInLabel,
           })}
-          value={formattedValue}
+          value={value?formattedValue:""}
           keyboardType={'number-pad'}
           placeholder={inputFormat}
           mask={inputFormat}
@@ -83,6 +85,7 @@ function DatePickerInput(
             style={styles.calendarButton}
             icon="calendar"
             onPress={() => setVisible(true)}
+            color={iconColor}
           />
         ) : null}
       </View>
